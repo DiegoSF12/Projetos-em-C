@@ -1,51 +1,88 @@
 #include <stdio.h>
 #include <stdlib.h>
-#define TAM 3
+#include <string.h>
+#include <locale.h>
 
-struct tipoPilha {
-        int dados[TAM];
-        int ini;
-        int topo;
-    };
-struct tipoPilha pilha;
+#define TAMANHO 10
+ 
+//ESTRUTURA DE PILHA
+typedef struct tpilha {
+    int dados[TAMANHO];
+    int ini;
+    int fim;
+}Pilha;
 
-void empilhar(int elemento){
-    if(pilha.topo == TAM){
-        printf("Pilha cheia\n");
-        system("pause");
-    } 
-    else{''
-        pilha.dados[pilha.topo] = elemento;
-        pilha.topo++;
-    }
-}
+//VARIAVEIS GLOBAIS
+Pilha pilha1;
+int op;
 
-int desempilhar(){
-    int elemento;
-    if(pilha.topo == pilha.ini){
-        printf("Pilha Vazia\n");
-        system("pause");
-    }
-    else{
-        pilha.topo--;
-        elemento = pilha.dados[pilha.topo];
-        return elemento;
-    }
-}
-
+void pilhaMostrar();
+void pilhaEntrar();
+int pilhaSair();
+void menuMostrar();
 
 int main(){
-    pilha.topo = 0;
-    pilha.ini = 0;
-    empilhar(8);
-    empilhar(16);
-    empilhar(49);
-    empilhar(78);
-    empilhar(78);
-    while(pilha.topo > pilha.ini){
-        int elementosDesempilhados = desempilhar();
-        printf("Elemento: %d\n", elementosDesempilhados);
+    setlocale(LC_ALL," ");
+    int op = 1;
+    int backup;
+    pilha1.ini = 0;
+    pilha1.fim = 0;
+    while(op != 0){
+        pilhaMostrar();
+        menuMostrar();
+        scanf("%d",&op);
+        switch(op) {
+            case 1:
+                pilhaEntrar();
+            break;
+            case 2:
+                backup = pilhaSair();
+                if(backup != -1){
+                printf("%d", backup);
+                }
+            break;
+            case 0:
+                op = 0;
+            break; 
+        }   
     }
+    //return 0;
+}
 
-    printf("Fim");
+void pilhaMostrar(){
+    printf("[ ");
+    for(int i = 0; i < TAMANHO; i++){
+        printf("%d ",pilha1.dados[i]);
+    }
+    printf(" ]");
+}
+
+void pilhaEntrar(){
+    if(pilha1.fim == TAMANHO){
+        printf("\nERRO: Imposivel empilhar, pilha cheia ");
+    }
+    else {
+        printf("\nDigite o valor a ser empilhado ");
+        scanf("%d",&pilha1.dados[pilha1.fim]);
+        pilha1.fim++;
+    }
+}
+
+int pilhaSair(){
+    if(pilha1.fim == 0){
+        printf("\nA pilha já se encontra vazia ");
+        return -1;
+    }
+    else{
+        int backup;
+        backup = pilha1.dados[pilha1.fim-1];
+        pilha1.dados[pilha1.fim-1] = 0;
+        pilha1.fim--;
+        return backup;
+    }
+}
+
+void menuMostrar(){
+    printf("\nEscolha uma opção dentro do menu:\n\n");
+    printf("| 1 - EMPILHAR | 2 - DESEMPILHAR | 0 - SAIR\n\n");
 }
