@@ -1,41 +1,65 @@
 #include <stdio.h>
-#include <stadlib.h>
+#include <string.h>
+#include <stdlib.h>
+#include <locale.h>
 
-#define TAM 3
+#define tamanho 5
 
-struct Filas
-{
-    int dados[TAM];
+typedef struct tfila{
+    int dados[tamanho];
     int ini;
-    int fim;    
-};
-struct Filas fila1;
+    int fim;
+}Fila;
 
-void enfileirar(int elemento){
-    if(fila1.fim == TAM){
-        printf("Fila cheia.\n");
-        system("pause");
+Fila fila1;
+int op;
+void filaEntrar();
+int filaSair();
+void filaMostrar();
+void menuMostrar();
+
+int main(){
+    op = 1;
+    menuMostrar();
+    return 0;
+}
+
+void filaEntrar(){
+    if(fila1.fim == tamanho){
+        printf("ERRO: Impossivel adicionar, fila cheia");
     }
     else{
-        fila1.dados[fila1.fim] = elemento;
-        fila.fim++;
+        printf("Digite o valor a ser inserido na fila:\n");
+        scanf("%d",&fila1.dados[fila1.fim]);
+        fila1.fim++;
     }
 }
-int desenfileirar(){
-    int elemento;
-    if(fila1.fim == fila1.ini){
-        printf("Fila vazia.\n");
-        system("pause");
+
+int filaSair(){
+    if(fila1.ini == fila1.fim){
+        printf("A pilha já se encontra vazia");
     }
     else{
-        elemento = fila1.dados[fila1.ini];
-        for(int i = 0; i < TAM; i++){
-            fila1.dados[i] = fila1.dados[i-1];
+        int backup;
+        for(int i = 0; i < tamanho; i++){
+            fila1.dados[i] = fila1.dados[i + 1];
         }
+        backup = fila1.dados[fila1.fim];
         fila1.dados[fila1.fim] = 0;
         fila1.fim--;
-        return elemento;
+        printf("%d", backup);
     }
+}
 
-    
+void filaMostar(){
+    printf("[ ");
+    for(int i = 0; i < tamanho; i++){
+        printf("| %d", fila1.dados[i]);
+    }
+    printf(" ]\n\n");
+}
+
+void menuMostrar(){
+    printf("\n\nSelecione uma opção\n");
+    printf("| 1 - FILA ENTRAR |\n| 2 - FILA SAIR   |\n| 0 - ENCERRAR    |");
 }
