@@ -23,7 +23,7 @@ void menuMostrar();
 
 int main(){
     setlocale(LC_ALL," ");
-    int op = 1;
+    op = 1;
     int backup;
     pilha1.ini = 0;
     pilha1.fim = 0;
@@ -38,7 +38,7 @@ int main(){
             case 2:
                 backup = pilhaSair();
                 if(backup != -1){
-                printf("%d", backup);
+                    printf("%d", backup);
                 }
             break;
             case 0:
@@ -46,7 +46,7 @@ int main(){
             break; 
         }   
     }
-    //return 0;
+    return 0;
 }
 
 void pilhaMostrar(){
