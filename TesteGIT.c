@@ -1,12 +1,10 @@
 #include <stdio.h>
-#include <string.h>
+#include <stdlib.h>
 
 int main(){
-    char saudacao[20];
-    strcpy("HELLO WORLD",saudacao);
-    printf("\n");
-    printf("%s", saudacao);
-
+    char *ptr;
+    ptr = (char*) malloc (sizeof(char) * 40);
+    printf("Ponteiro ptr: %p", (void*)ptr);
     return 0;
 
 }
