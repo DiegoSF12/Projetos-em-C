@@ -99,9 +99,9 @@ void grafoInserir(){
 //REMOVER ARESTA
 void grafoRemover(){
     int numero1, numero2;
-    printf("Escolha o vertice de origem entre 0 e %d: ", tamanho-1);
+    printf("Escolha o vertice de origem entre 0 e %d: ", tamanho);
     scanf("%d", &numero1);
-    printf("Escolha o vertice de destino entre 0 e %d: ", tamanho-1);
+    printf("Escolha o vertice de destino entre 0 e %d: ", tamanho);
     scanf("%d", &numero2);
     if(numero1 > tamanho-1 || numero2 > tamanho-1 || numero1 < 0 || numero2 < 0){
         printf("\nOs valores precisam estar entre 0 e %d: ", tamanho-1);
