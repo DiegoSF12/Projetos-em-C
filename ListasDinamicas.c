@@ -52,17 +52,55 @@ void insereNoFinal(int elemento){
     }
 }
 
+void imprimir(){
+    NO* atual = Lista1.ini;
+    printf("Elementos da Lista: ");
+    while(atual != NULL){
+        printf("| %d |",atual->dados);
+        atual = atual->prox;
+    }
+    printf("----NULL\n\n");
+
+}
+
 void menu(){
-    printf("1 - Para inserir no inicio");
-    printf("2 - ");
-    printf();
-    printf();
+    printf("1 - Para inserir no inicio\n");
+    printf("2 - Para inserir no fim\n");
+    printf("3 - Para imprimir na tela\n");
+    printf("0 - Sair\n\n");
 }
 
 
 
 int main (){
-    
+    int op = 0;   
+    int dado = 0; 
+    do{
+        printf("Para iniciarmos, escolha uma das opções abaixo:\n");
+        menu();
+        scanf("%d", &op);
+        fflush(stdin);
+        switch(op){
+            case 1:
+                printf("Informe o elemento a ser inserido: ");
+                scanf("%d", &dado);
+                fflush(stdin);
+                insereNoInicio(dado);
+            break;
+            case 2:
+                printf("Informe o elemento que será inserido: ");
+                scanf("%d", &dado);
+                fflush(stdin);
+                insereNoFinal(dado);
+            break;
+            case 3:
+                imprimir();
+            break;
+            default:
+                printf("Valor digitado invalido");
+            break;
+        }
+    }while(op != 0);
 
 
     return 0;
