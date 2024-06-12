@@ -14,6 +14,8 @@ int op = 1;
 
 //PROTOTIPAÇÃO
 int grafoTamanho();
+
+
 void grafoDesenhar();
 void grafoDesenharMatriz();
 void grafoInserir();
