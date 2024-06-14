@@ -24,6 +24,7 @@ void menuMostrar();
 
 //FUNÇÃO PRINCIPAL
 int main(){
+    system("color 12");
     while(tamanho <= 0 || tamanho > maxTam){
         tamanho = grafoTamanho();
         if(tamanho <= 0 || tamanho > maxTam){
