@@ -21,8 +21,23 @@ int main(int argc, char **argv){
     do{
         //DESENHA O MENU NA TELA
         menuMostrar();
-        scanf()
-    }
+        scanf("%d", &opt);
+        switch(opt){
+            case 1:
+                //CRIA NOVO GRAFO
+                grafoCriar();
+            break;
+            case 2: 
+                //PROCURA OS CAMINHOS
+                if(vertices > 0){
+                    grafoProcurar();
+                }
+            break;
+        }
+    }while(opt != 0);
+    printf("\nAlgoritmo de Dijkstra finalizado...\n\n");
+    system("pause");
+    return 0;
 }
 
 //IMPLEMENTAÇÃO ALGORITMO DE DIJKSTRA 
@@ -151,7 +166,30 @@ void grafoCriar(void){
             scanf("%d", &custos);
         }while(custo < 0);
         custos[(origem -1) * vertices + destino - 1] = custo;
-
+    }while(origem);
+}
+//BUSCA OS MENOS CAMINHOS ENTRE OS VÉRTICES
+void grafoProcurar(void){
+    int i;
+    int j;
+    system("cls");
+    system("color 03");
+    printf("Lista de menores caminhos no grafo dado: \n");
+    for(i = 0; i <= vertices; i++){
+        for(j = 0; j <= vertices; j++){
+            dijkstra(vertices, i, j, custos);
+        }
+        printf("\n");
     }
+    system("pause");
+    system("color 07");
+}
 
+//DESENHA O MENU NA TELA
+void menuMostrar(void){
+    system("cls");
+    printf("Implementação do algoritmo de Dijkstra\n");
+    printf("\t1 - Adicionar um grafo\n");
+    printf("\t2 - Procurar os menores caminhos de um grafo\n");
+    printf("\t0 - Sair do programa\n");
 }
