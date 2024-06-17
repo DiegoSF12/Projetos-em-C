@@ -2,7 +2,7 @@
 #include <stdlib.h>
 
 int main(){
-    system("color fc");
+    system("color f4");
     printf("Hello, World");
 
 }
