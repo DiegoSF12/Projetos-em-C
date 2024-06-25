@@ -18,5 +18,5 @@ typedef struct str_No{
     str_No *dir;
     str_No *pai;
 }Arvore;
-s
+
 InsereNoArvore(Arvore pai, int dado);
