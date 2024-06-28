@@ -21,6 +21,8 @@ void listaGerar(void);
 void listaLer(void);
 void listaLimpar(void);
 void listaMostrarOrdenado(void);
+void troca(int* a, int* b);
+int bubbleSort(int vec[ ]);
 
 //FUNÇÃO PRINCIPAL
 int main(){
@@ -31,6 +33,7 @@ int main(){
         listaMostrarOrdenado();
         menuMostrar();
         scanf("%d", &opt);
+        fflush(stdin);
         switch (opt) {
             case 1: 
                 listaGerar();
@@ -38,10 +41,10 @@ int main(){
             case 2:
                 listaLer();
             break;
-        }while(opt != 0);
-        system("pause");
-        return 0;
-    }
+        }
+    }while(opt != 0);
+    system("pause");
+    return 0;
 }
 
 //MOSTRAR CONTEUDO DA LISTA
@@ -79,7 +82,7 @@ void listaLer(void){
 }
 
 //PREPARAR A LISTA PARA ORDENAÇÃO
-void listaLimpar(void){
+void listaLimpar(){
     for(int i = 0; i < tamanho; i++){
         ordenado[i] = lista[i];
     }
@@ -92,4 +95,27 @@ void listaMostrarOrdenado(void){
         printf("%d | ", ordenado[i]);
     }
     printf(" ] \nTempo = %d iteracoes\n", qtd);
+}
+
+//APLICA O METODO DE BUBBLESORT
+int bubbleSort(int vec[ ]){
+    int qtd, i, j, tmp;
+    qtd = 0;
+    for(i = 0; i < tamanho - 1; i++){
+        for(j = 0; j < tamanho; j++){
+            if(vec[i] > vec[j]){
+                troca(&vec[i], &vec[j]);
+            }
+            qtd++;
+        }
+    }
+    return qtd;
+}
+
+//FUNÇÃO GENERICA DE TROCA DE VALORES
+void troca(int* a, int* b){
+    int tmp;
+    tmp = *a;
+    *a = *b;
+    *b = tmp;
 }
