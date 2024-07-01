@@ -97,7 +97,11 @@ void listaMostrarOrdenado(void){
     printf(" ] \nTempo = %d iteracoes\n", qtd);
 }
 
-//APLICA O METODO DE BUBBLESORT
+
+/*APLICA O METODO DE BUBBLESORT
+ * ESSE METODO SERVE PARA ORDENAR UM VETOR
+ * ELE FUNCINA FAZENDO COMPARAÇÕES SEQUENCIAIS, CASO I > J, ELE TROCA OS DOI ELEMENTOS DE POSIÇÃO E VAI ASSIM ATÉM O ULTIMO ITEM DO VETOR
+*/
 int bubbleSort(int vec[ ]){
     int qtd, i, j, tmp;
     qtd = 0;
@@ -110,6 +114,16 @@ int bubbleSort(int vec[ ]){
         }
     }
     return qtd;
+}
+
+//APLICA O MODO SELECTIONSORT
+int selectionSort(int vec[ ], int tam){
+    int i, j, min, qtd = 0;
+    for(i = 0; i < (tam - 1); i++){
+        min = i;
+        for(j = (i + 1); )
+    }
+
 }
 
 //FUNÇÃO GENERICA DE TROCA DE VALORES
