@@ -23,6 +23,7 @@ void listaLimpar(void);
 void listaMostrarOrdenado(void);
 void troca(int* a, int* b);
 int bubbleSort(int vec[ ]);
+int selectionSort(int vec[ ], int tam);
 
 //FUNÇÃO PRINCIPAL
 int main(){
@@ -116,14 +117,26 @@ int bubbleSort(int vec[ ]){
     return qtd;
 }
 
-//APLICA O MODO SELECTIONSORT
+/*APLICA O MODO SELECTIONSORT
+ * ESSE POR SUA VEZ, CONSISTE EM COMPARAR UM ELEMENTO X COM TODOS OS OUTROS 
+ * ELEMENTOS DO VETOR E CASO ENCONTRE UM ELEMENTO Y QUE SEJA MENOR QUE X 
+ * REALIZA A TROCA DAS POSIÇÕES
+*/
 int selectionSort(int vec[ ], int tam){
     int i, j, min, qtd = 0;
     for(i = 0; i < (tam - 1); i++){
         min = i;
-        for(j = (i + 1); )
+        for(j = (i + 1); j < tam; j++ ){
+            if(vec[j] < vec[min]){
+                min = j;
+            }
+            qtd++;
+        }
+        if(i != min){
+            troca(&vec[i], &vec[min]);
+        }
     }
-
+    return(qtd);
 }
 
 //FUNÇÃO GENERICA DE TROCA DE VALORES
