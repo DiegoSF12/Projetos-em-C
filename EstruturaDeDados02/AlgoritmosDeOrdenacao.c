@@ -24,6 +24,8 @@ void listaMostrarOrdenado(void);
 void troca(int* a, int* b);
 int bubbleSort(int vec[ ]);
 int selectionSort(int vec[ ], int tam);
+int insertionSort(int vec[ ], int tam);
+
 
 //FUNÇÃO PRINCIPAL
 int main(){
@@ -134,6 +136,21 @@ int selectionSort(int vec[ ], int tam){
         }
         if(i != min){
             troca(&vec[i], &vec[min]);
+        }
+    }
+    return(qtd);
+}
+
+//APLICANDO O INSERTIONSORT
+int insertionSort(int vec[ ], int tam){
+    int i, j;
+    int qtd = 0;
+    for(i = 1; i < tam; i++){
+        j = 1;
+        while((vec[j] < vec[j - 1]) && (j != 0)){
+            troca(&vec[j], &vec[j - 1]);
+            j--;
+            qtd++;
         }
     }
     return(qtd);
