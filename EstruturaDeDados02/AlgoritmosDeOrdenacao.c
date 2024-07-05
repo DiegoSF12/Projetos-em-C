@@ -25,6 +25,7 @@ void troca(int* a, int* b);
 int bubbleSort(int vec[ ]);
 int selectionSort(int vec[ ], int tam);
 int insertionSort(int vec[ ], int tam);
+int shellSort(int vec[ ], int tam);
 
 
 //FUNÇÃO PRINCIPAL
@@ -153,6 +154,30 @@ int insertionSort(int vec[ ], int tam){
             qtd++;
         }
     }
+    return(qtd);
+}
+
+//APLICANDO O SHELLSORT
+int shellSort(int vec[ ], int tam){
+    int i, j, valor;
+    int qtd = 0;
+    int gap = 1;
+    do{
+        gap = 3 * gap + 1;
+    }while(gap < tam);
+    do {
+        gap /= 3;
+        for(i = 0; i < tam; i++){
+            valor = vec[i];
+            j = i - gap;
+            while(j >= 0 && valor < vec[j]){
+                vec[j + gap] = vec[j];
+                j -= gap;
+                qtd++;
+            }
+            vec[j + gap] = valor;
+        }
+    }while(gap > 1);
     return(qtd);
 }
 
